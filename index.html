@@ -7,377 +7,16 @@
     <title>Web Message Hub</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-    <style>
-        * {
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            background-color: #0e1621;
-            color: #000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-        }
-
-        .container {
-            margin-top: 200px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .input-group {
-            margin-top: 0;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 1px;
-            color: #000;
-        }
-
-
-        .input-group textarea {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            width: 100%;
-            padding: 5px;
-            max-width: 100%;
-            border: 0px solid #ddd;
-            border-radius: 5px;
-            background: #f9f9f900;
-            color: #ffffff;
-            margin-top: 5px;
-            outline: none;
-            height: 30px;
-        }
-
-        .input-group input:focus,
-        .input-group textarea:focus {
-            outline: 1px solid #e81a403a;
-        }
-
-        .button {
-            font-size: 25px;
-            width: 50px;
-            height: 50px;
-            background-color: #a7e81a;
-            color: rgb(0, 0, 0);
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .button:hover,
-        .add-button:hover,
-        .mobile-send-button:hover {
-            background-color: #1ae828;
-        }
-
-        .input-btn {
-            width: 100%;
-            display: flex;
-            background-color: #0e1621;
-            align-items: center;
-            gap: 10px;
-            padding: 10px;
-            border-radius: 20px;
-            margin-bottom: 10px;
-        }
-
-        .input-btn input {
-            width: 100%;
-            height: 35px;
-            padding: 10px;
-            border: 0px solid #e81a4046;
-            border-radius: 15px;
-            background: #182533;
-            color: #ffffff;
-        }
-
-        .input-btn input:focus {
-            outline: 1px solid #e81a4089;
-        }
-
-        .btn-block {
-            width: 350px;
-            padding: 10px;
-            background-color: #182533;
-            border-radius: 25px;
-            margin-bottom: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .btn-block .delete-button {
-            padding: 5px;
-            min-height: 35px;
-            min-width: 35px;
-            background: none;
-            border: none;
-            color: rgb(255, 255, 255);
-            background-color: #e72c2c;
-            cursor: pointer;
-            font-size: 18px;
-            margin-left: 10px;
-            border-radius: 90px;
-        }
-
-        .btn-block .delete-button:hover {
-            background-color: #b62323;
-        }
-
-        ::placeholder {
-            color: rgb(209, 209, 209);
-        }
-
-        .settings {
-            display: flex;
-            justify-content: space-around;
-            width: 300px;
-            margin-bottom: 10px;
-        }
-
-        .settings input {
-            width: 140px;
-            padding: 7px 13px;
-            border: 0px solid #e81a407f;
-            border-radius: 10px;
-            background: #182533;
-            color: #ffffff;
-        }
-
-        .settings input:focus {
-            outline: 1px solid #e81a4089;
-        }
-
-        .send-button {
-            padding: 0;
-            background-color: #e81a40;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            min-width: 50px;
-            min-height: 50px;
-            font-size: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 10px;
-        }
-
-        .send-button i {
-            margin-bottom: -3px;
-        }
-
-        .send-button:hover {
-            background-color: #b41230;
-            rotate: -90deg;
-        }
-
-        .channel {
-            width: 58px;
-            height: 58px;
-            margin-right: 10px;
-            background-color: #e81a40;
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: start;
-            font-size: 60px;
-            overflow: hidden;
-            border: 1px solid #e81a40;
-        }
-
-        .channel img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .message-block {
-            display: flex;
-            flex-direction: row;
-            align-items: end;
-
-        }
-
-        .message {
-            background: #182533;
-            padding: 10px;
-            border-radius: 15px;
-            width: 300px;
-            height: auto;
-        }
-
-        #channelname {
-            font-size: 14px;
-            color: #e81a40;
-            font-weight: bold;
-            overflow: hidden;
-        }
-
-        .send {
-            width: 420px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        .add-button {
-            font-weight: 900;
-            padding: 5px 20px 5px 10px;
-            background-color: #a7e81a;
-            color: rgb(0, 0, 0);
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-        }
-
-        .add-button i {
-            font-size: 20px;
-            margin-right: 10px;
-        }
-
-        .row {
-            width: 90%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .notification {
-            height: 30px;
-            width: 100%;
-            opacity: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            background-color: #0e1621;
-        }
-
-        .show {
-            opacity: 0;
-        }
-
-        .notification .danger {
-            color: red;
-            border-radius: 20px;
-            padding: 5px 10px;
-        }
-
-        .notification .success {
-            color: #1ae828;
-            border-radius: 20px;
-            padding: 5px 10px;
-        }
-
-        .notification .error {
-            color: red;
-        }
-
-        .contact {
-            color: #fff;
-            background-color: #27a7e7;
-            border-radius: 10px;
-            padding: 10px 20px;
-            text-decoration: none;
-        }
-
-        .contact:hover {
-            letter-spacing: 1px;
-            background-color: #1c85ba;
-        }
-
-        .mobile-send {
-            width: 100%;
-            display: none;
-            justify-content: center;
-            position: fixed;
-            bottom: 20px;
-
-        }
-
-        .mobile-send-button {
-            padding: 3px 10px 3px 15px;
-            background-color: #a7e81a;
-            color: rgb(0, 0, 0);
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 15px;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-        }
-
-        .mobile-send-button i {
-            margin-left: 10px;
-            font-size: 25px;
-        }
-
-        @media (width <=500px) {
-            .mobile-send {
-                display: flex;
-            }
-
-            .send-button {
-                display: none;
-            }
-
-            .send {
-                width: 350px;
-            }
-
-            .button {
-                margin-right: 5px;
-            }
-
-            .btn-block {
-                width: 300px;
-            }
-
-            .message {
-                width: 270px;
-            }
-
-            .settings {
-                width: 270px;
-            }
-
-            .settings input {
-                width: 120px;
-            }
-
-            .input-btn input {
-                font-size: 11px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div style="margin-top: 50px;">
-        <a href="https://t.me/webmessagehub" class="contact">Telegram канал проекта</a>
-    </div>
+    <header>
+        <a href="https://t.me/webmessagehub" class="contact"><i class="bi bi-telegram"></i>Telegram</a>
+        <a href="faq.html" class="faq"><i class="bi bi-info-circle-fill"></i>FAQ</a>
+        <a href="https://www.donationalerts.com/r/artemka_qupin" class="donate"><i
+                class="bi bi-credit-card-fill"></i>Поддержать</a>
+    </header>
     <div class="container">
         <div class="message-block">
             <div class="channel">
@@ -385,19 +24,22 @@
             </div>
             <div class="details">
                 <div class="settings">
-                    <input type="password" id="token" placeholder="Токен бота" required>
-                    <input type="text" id="chatId" placeholder="ID канала" required>
+                    <input minlength="43" maxlength="46" type="text" id="token" placeholder="Токен бота" required>
+                    <input maxlength="20" type="text" id="chatId" placeholder="ID канала" required>
                 </div>
                 <div class="message">
                     <div class="form-section">
                         <div id="channelname">Web Message Hub</div>
                     </div>
                     <div class="input-group">
-                        <textarea id="message" rows="4" placeholder="Введите текст сообщения" required></textarea>
+                        <textarea maxlength="4096" id="message" rows="2" placeholder="Введите текст сообщения"
+                            required></textarea>
                     </div>
                 </div>
             </div>
-            <button class="send-button" onclick="sendMessage()"><i class="bi bi-arrow-right-short"></i>
+            <button class="send-button" onclick="sendMessage()">
+                <!-- <i class="bi bi-arrow-right-short"></i> -->
+                <img src="send.png" width="100%">
             </button>
         </div>
         <div class="notification" id="notif">
@@ -405,18 +47,25 @@
         </div>
         <div class="send">
             <div class="input-group">
-                <button class="button" onclick="addButtonBlock()" title="Добавить строку кнопок"><i
+                <button class="button" onclick="addButtonBlock()" title="Добавить блок кнопок"><i
                         class="bi bi-folder-plus"></i></button>
             </div>
             <div class="buttons-container">
                 <div id="buttonBlocksContainer"></div>
             </div>
         </div>
+
     </div>
     <div class="mobile-send">
+        <div class="mobile-input-group">
+            <button class="button" onclick="addButtonBlock()" title="Добавить блок кнопок"><i
+                    class="bi bi-folder-plus"></i></button>
+        </div>
         <button class="mobile-send-button" onclick="sendMessage()">Отправить сообщение <i
                 class="bi bi-telegram"></i></button>
+
     </div>
+    <footer>V1.2 BETA</footer>
     <script>
         let buttonBlockCounter = 0;
 
@@ -425,36 +74,64 @@
             const blockDiv = document.createElement('div');
             blockDiv.className = 'btn-block';
             blockDiv.innerHTML = `
-                <div class="input-btn">
-                    <input type="text" placeholder="Текст кнопки" class="button-text">
-                    <input type="text" placeholder="Ссылка кнопки" class="button-url">
-                    <button class="delete-button" onclick="removeButton(this)"><i class="bi bi-trash"></i></button>
-                </div>
-                <div class="row">
-                    <button class="add-button" onclick="addButton(this)"><i class="bi bi-plus-circle"></i> Добавить кнопку</button>
-                    <button class="delete-button" onclick="removeBlock(this)"><i class="bi bi-trash"></i></button>
-                </div>
-            `;
+        <div class="input-btn">
+            <input maxlength="20" type="text" placeholder="Текст кнопки" class="button-text">
+            <input maxlength="32" type="text" placeholder="Ссылка кнопки" class="button-url">
+            <button class="delete-button" onclick="removeButton(this)"><i class="bi bi-trash"></i></button>
+        </div>
+        <div class="row">
+            <button class="add-button" onclick="addButton(this)"><i class="bi bi-plus-circle"></i>Добавить кнопку</button>
+            <button class="delete-button" onclick="removeBlock(this)"><i class="bi bi-trash"></i></button>
+        </div>
+    `;
             container.appendChild(blockDiv);
+            buttonBlockCounter++;
+            updateMargin();
         }
 
         function addButton(button) {
             const buttonDiv = document.createElement('div');
             buttonDiv.className = 'input-btn';
             buttonDiv.innerHTML = `
-                <input type="text" placeholder="Текст кнопки" class="button-text">
-                <input type="text" placeholder="Ссылка кнопки" class="button-url">
-                <button class="delete-button" onclick="removeButton(this)"><i class="bi bi-trash"></i></button>
-            `;
+        <input type="text" placeholder="Текст кнопки" class="button-text">
+        <input type="text" placeholder="Ссылка кнопки" class="button-url">
+        <button class="delete-button" onclick="removeButton(this)"><i class="bi bi-trash"></i></button>
+    `;
             button.parentElement.parentElement.insertBefore(buttonDiv, button.parentElement);
         }
 
         function removeButton(button) {
-            button.parentElement.remove();
+            const buttonRow = button.parentElement;
+            buttonRow.remove();
+
+            const block = buttonRow.parentElement;
+            const buttonsInBlock = block.querySelectorAll('.input-btn');
+
+            if (buttonsInBlock.length === 0) {
+                block.remove();
+                buttonBlockCounter--;
+            }
+
+            updateMargin();
         }
 
         function removeBlock(button) {
             button.parentElement.parentElement.remove();
+            buttonBlockCounter--;
+            updateMargin();
+        }
+
+        function updateMargin() {
+            const containers = document.getElementsByClassName('container');
+            const buttonBlocks = document.querySelectorAll('#buttonBlocksContainer .btn-block');
+
+            for (let i = 0; i < containers.length; i++) {
+                if (buttonBlocks.length > 0) {
+                    containers[i].style.marginTop = "100px";
+                } else {
+                    containers[i].style.marginTop = "200px";
+                }
+            }
         }
 
         function sendMessage() {

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Telegram Bot</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="faq.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Часто задаваемые вопросы (FAQ)</h1>
+
+        <div class="faq-item">
+            <h2>Как создать бота в Telegram?</h2>
+            <p>Для создания бота в Telegram, следуйте этим шагам:</p>
+            <ol>
+                <li>Откройте Telegram и найдите <a href="https://t.me/BotFather?start=start" target="_blank">BotFather <i class="bi bi-box-arrow-up-right"></i></a>.
+                </li>
+                <li>Начните чат с BotFather и отправьте команду <span class="var">/start</span>.</li>
+                <li>Отправьте команду <span class="var">/newbot</span> и следуйте инструкциям для создания нового бота.
+                </li>
+                <li>Придумайте имя для вашего бота и уникальное имя пользователя, оканчивающееся на <span
+                        class="var">"bot"</span>.</li>
+                <li>После успешного создания бота BotFather предоставит вам токен API.</li>
+            </ol>
+        </div>
+        <div class="faq-item">
+            <h2>Как добавить бота в канал?</h2>
+            <p>Чтобы добавить бота в канал, выполните следующие шаги:</p>
+            <ol>
+                <li>Откройте Telegram и перейдите в ваш канал.</li>
+                <li>Нажмите на имя канала в верхней части экрана, чтобы открыть информацию о канале.</li>
+                <li>Нажмите <span class="var">"Администраторы"</span> и затем <span class="var">"Добавить
+                        администратора"</span>.</li>
+                <li>Введите имя вашего бота и добавьте его в качестве администратора.</li>
+            </ol>
+        </div>
+        <div class="faq-item">
+            <h2>Как получить токен бота Telegram?</h2>
+            <p>Чтобы получить токен бота Telegram, выполните следующие шаги:</p>
+            <ol>
+                <li>Откройте дилог с <a href="https://t.me/BotFather" target="_blank">BotFather <i class="bi bi-box-arrow-up-right"></i></a>.</li>
+                <li>Отправьте команду <span class="var">/mybots</span> и выберите нужного бота.
+                </li>
+                <li>Выберите кнопку <span class="var">API Token</span> и скопируйте токен бота.
+                </li>
+            </ol>
+        </div>
+
+        <div class="faq-item">
+            <h2>Как получить ID чата Telegram?</h2>
+            <p>Для получения ID чата Telegram, выполните следующие действия:</p>
+            <ol>
+                <li>Перейдите по ссылке <a href="https://api.telegram.org/bot<ваш_токен>/getUpdates"
+                        target="_blank"><code>https://api.telegram.org/bot<ваш_токен>/getUpdates <i class="bi bi-box-arrow-up-right"></i></code></a> с вашим
+                    токеном вместо <code><ваш_токен></code>, или через форму ниже, чтобы получить обновления
+                    чата.
+                </li>
+                <div class="token">
+                    <input type="text" name="token" id="token" placeholder="Введите токен">
+                    <button class="search" onclick="searchtoken()"><i class="bi bi-link"></i></button>
+                </div>
+                <li>Откройте чат, <span class="var">id</span> которого нужно узнать.</li>
+                <li>Отправьте любое сообщение в чат.</li>
+                <li><i class="bi bi-arrow-clockwise"></i> Обновите страницу <code>api.telegram.org/</code></li>
+                <li>Включите  <kbd>Автоформатирование</kbd> и найдите в ответе JSON строку <span
+                        class="var">"chat"</span> или <span class="var">"sender_chat"</span>, под которой строка <span class="var">"id"</span> —
+                    это и есть ID вашего чата. (над строкой <span class="var">"title"</span>)</li>
+            </ol>
+            <div id="nope"></div>
+        </div>
+
+        <div class="faq-item">
+            <h2>Как Сделать текст красивым?</h2>
+            <p>Данная функция находится в разработке, следите за новостями в нашем <a
+                    href="https://clck.ru/3GfxUu">Telegram</a> канале.</p>
+            <!-- <ol>
+                <li>Скоро...</a>
+            </ol> -->
+        </div>
+        <footer>
+            <a href="https://t.me/webmessagehub" class="contact"><i class="bi bi-telegram"></i>Telegram</a>
+            <a href="index.html" class="faq"><i class="bi bi-info-circle-fill"></i>Главная</a>
+            <a href="https://www.donationalerts.com/r/artemka_qupin" class="donate"><i class="bi bi-credit-card-fill"></i>Поддержать</a>
+        </footer>
+    </div>
+    <script>
+        function searchtoken() {
+            const token = document.getElementById('token').value;
+            if (token) {
+                const url = `https://api.telegram.org/bot${token}/getUpdates`;
+                window.open(url, '_blank');
+            } else {
+                document.getElementById('nope').innerText = 'Нужно ввести токен';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
