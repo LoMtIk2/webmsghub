@@ -373,6 +373,7 @@ body {
 .mobile-send-button i {
     margin-left: 10px;
     font-size: 25px;
+    margin-bottom: -2px;
 }
 
 .mobile-input-group {
