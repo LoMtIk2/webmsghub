@@ -32,8 +32,11 @@
                         <div id="channelname">Web Message Hub</div>
                     </div>
                     <div class="input-group">
-                        <textarea maxlength="4096" id="message" rows="2" placeholder="Введите текст сообщения"
-                            required></textarea>
+                        <div class="textarea-container">
+                            <textarea maxlength="4096" id="message" rows="2" placeholder="Введите текст сообщения"
+                                required></textarea>
+                            <span class="custom-resizer"><i class="bi bi-textarea-resize"></i></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,10 +60,10 @@
 
     </div>
     <div class="mobile-send">
-        <div class="mobile-input-group">
-            <button class="button" onclick="addButtonBlock()" title="Добавить блок кнопок"><i
-                    class="bi bi-folder-plus"></i></button>
-        </div>
+        <!-- <div class="mobile-input-group"> -->
+        <button class="button" onclick="addButtonBlock()" title="Добавить блок кнопок"><i
+                class="bi bi-folder-plus"></i></button>
+        <!-- </div> -->
         <button class="mobile-send-button" onclick="sendMessage()">Отправить сообщение <i
                 class="bi bi-telegram"></i></button>
 
@@ -188,6 +191,73 @@
                     }, 5000);
                 });
         }
+
+        const textarea = document.querySelector('textarea');
+        const resizer = document.querySelector('.custom-resizer');
+
+        // Функция для обновления высоты
+        const updateHeight = () => {
+            textarea.style.height = 'auto';
+            textarea.style.height = `${textarea.scrollHeight}px`;
+        };
+
+        // Автоматическое изменение высоты при вводе
+        textarea.addEventListener('input', updateHeight);
+
+        // Обработка изменения высоты (мышь и сенсор)
+        let isResizing = false;
+        let startY, startHeight;
+
+        const startResize = (y) => {
+            isResizing = true;
+            startY = y;
+            startHeight = textarea.offsetHeight;
+        };
+
+        const resize = (y) => {
+            if (!isResizing) return;
+            const newHeight = startHeight + (y - startY);
+            textarea.style.height = `${newHeight}px`;
+        };
+
+        const stopResize = () => {
+            isResizing = false;
+        };
+
+        // Мышь
+        resizer.addEventListener('mousedown', (e) => startResize(e.pageY), {
+            passive: true
+        });
+        document.addEventListener('mousemove', (e) => resize(e.pageY), {
+            passive: true
+        });
+        document.addEventListener('mouseup', stopResize, {
+            passive: true
+        });
+
+        // Сенсорные события
+        resizer.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Предотвращаем прокрутку страницы
+            startResize(e.touches[0].pageY);
+        }, {
+            passive: false
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            e.preventDefault(); // Предотвращаем прокрутку страницы
+            resize(e.touches[0].pageY);
+        }, {
+            passive: false
+        });
+
+        document.addEventListener('touchend', stopResize, {
+            passive: true
+        });
+
+        // Инициализация высоты при загрузке
+        window.addEventListener('load', updateHeight, {
+            once: true
+        });
     </script>
 </body>
 
