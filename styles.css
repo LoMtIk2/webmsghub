@@ -5,17 +5,7 @@
 
 ::-webkit-scrollbar {
     width: 0;
-    /* max-width: 5px; */
 }
-
-/* ::-webkit-scrollbar-track,
-::-webkit-scrollbar-track-piece {
-    background: #0e1621;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #182533;
-} */
 
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -26,6 +16,7 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0;
+    overflow-y: scroll;
 }
 
 .container {
@@ -50,6 +41,7 @@ body {
     width: 100%;
     min-height: 30px;
     padding: 5px;
+    margin-bottom: 11px;
     border: 0px solid #ddd;
     border-radius: 5px;
     background: #f9f9f900;
@@ -72,7 +64,7 @@ body {
 .custom-resizer {
     color: #e81a40;
     position: absolute;
-    bottom: 0;
+    bottom: -4px;
     right: 0;
     cursor: ns-resize;
     font-size: 16px;
@@ -382,10 +374,7 @@ body {
 }
 
 .mobile-input-group {
-    /* margin-top: 10px; */
-    /* width: 100%; */
     display: none;
-    /* justify-content: flex-end; */
 }
 
 .mobile-input-group .button {
