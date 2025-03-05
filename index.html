@@ -77,16 +77,15 @@
             const blockDiv = document.createElement('div');
             blockDiv.className = 'btn-block';
             blockDiv.innerHTML = `
-        <div class="input-btn">
-            <input maxlength="20" type="text" placeholder="Текст кнопки" class="button-text">
-            <input maxlength="32" type="text" placeholder="Ссылка кнопки" class="button-url">
-            <button class="delete-button" onclick="removeButton(this)"><i class="bi bi-trash"></i></button>
-        </div>
-        <div class="row">
-            <button class="add-button" onclick="addButton(this)"><i class="bi bi-plus-circle"></i>Добавить кнопку</button>
-            <button class="delete-button" onclick="removeBlock(this)"><i class="bi bi-trash"></i></button>
-        </div>
-    `;
+                <div class="input-btn">
+                    <input maxlength="20" type="text" placeholder="Текст кнопки" class="button-text">
+                    <input maxlength="32" type="text" placeholder="Ссылка кнопки" class="button-url">
+                </div>
+                <div class="row">
+                    <button class="add-button" onclick="addButton(this)"><i class="bi bi-plus-circle"></i>Добавить кнопку</button>
+                    <button class="delete-button" onclick="removeBlock(this)"><i class="bi bi-trash"></i></button>
+                </div>
+                `;
             container.appendChild(blockDiv);
             buttonBlockCounter++;
             updateMargin();
@@ -96,10 +95,10 @@
             const buttonDiv = document.createElement('div');
             buttonDiv.className = 'input-btn';
             buttonDiv.innerHTML = `
-        <input type="text" placeholder="Текст кнопки" class="button-text">
-        <input type="text" placeholder="Ссылка кнопки" class="button-url">
-        <button class="delete-button" onclick="removeButton(this)"><i class="bi bi-trash"></i></button>
-    `;
+                <input type="text" placeholder="Текст кнопки" class="button-text">
+                <input type="text" placeholder="Ссылка кнопки" class="button-url">
+                <button class="delete-button" onclick="removeButton(this)"><i class="bi bi-trash"></i></button>
+                `;
             button.parentElement.parentElement.insertBefore(buttonDiv, button.parentElement);
         }
 
@@ -225,39 +224,27 @@
         };
 
         // Мышь
-        resizer.addEventListener('mousedown', (e) => startResize(e.pageY), {
-            passive: true
-        });
-        document.addEventListener('mousemove', (e) => resize(e.pageY), {
-            passive: true
-        });
-        document.addEventListener('mouseup', stopResize, {
-            passive: true
-        });
+        resizer.addEventListener('mousedown', (e) => startResize(e.pageY), { passive: true });
+        document.addEventListener('mousemove', (e) => resize(e.pageY), { passive: true });
+        document.addEventListener('mouseup', stopResize, { passive: true });
 
         // Сенсорные события
         resizer.addEventListener('touchstart', (e) => {
             e.preventDefault(); // Предотвращаем прокрутку страницы
             startResize(e.touches[0].pageY);
-        }, {
-            passive: false
-        });
+        }, { passive: false });
 
         document.addEventListener('touchmove', (e) => {
+            if (!isResizing) return; // Allow scrolling when not resizing
             e.preventDefault(); // Предотвращаем прокрутку страницы
             resize(e.touches[0].pageY);
-        }, {
-            passive: false
-        });
+        }, { passive: false });
 
-        document.addEventListener('touchend', stopResize, {
-            passive: true
-        });
+        document.addEventListener('touchend', stopResize, { passive: true });
 
         // Инициализация высоты при загрузке
-        window.addEventListener('load', updateHeight, {
-            once: true
-        });
+        window.addEventListener('load', updateHeight, { once: true });
+
     </script>
 </body>
 
