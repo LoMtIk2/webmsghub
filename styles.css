@@ -84,14 +84,14 @@
 			width: 55px;
 			height: 55px;
 			background-color: #a7e81a;
-			color: rgb(0, 0, 0);
+			color: #000;
 			border: none;
 			border-radius: 30px;
 			cursor: pointer;
 			transition: all 0.3s;
 			text-align: center;
 		}
-
+		.send-button:hover,
 		.button:hover,
 		.add-button:hover,
 		.mobile-send-button:hover {
@@ -189,7 +189,7 @@
 			transition: all 0.3s;
 			width: 50px;
 			height: 50px;
-			font-size: 30px;
+			font-size: 40px;
 			margin-left: 10px;
 			display: flex;
 			justify-content: center;
@@ -198,10 +198,6 @@
 
 		.send-button i {
 			margin-bottom: -3px;
-		}
-
-		.send-button:hover {
-			background-color: #b41230;
 		}
 
 		.channel {
