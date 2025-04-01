@@ -309,7 +309,7 @@
 			const parseMode = document.getElementById('parseMode').value;
 
 			if (!token || !chatId || !message) {
-				showStatus('Ошибка: заполните все обязательные поля <i class="bi bi-x-octagon"></i>', 'error');
+				showStatus('Ошибка: заполните все обязательные поля!', 'error');
 				return;
 			}
 
@@ -367,7 +367,7 @@
 				const result = await response.json();
 
 				if (result.ok) {
-					showStatus('Сообщение успешно отправлено в Telegram <i class="bi bi-check-lg"></i>', 'success');
+					showStatus('Сообщение успешно отправлено в Telegram!', 'success');
 				} else {
 					let errorMsg = 'Ошибка при отправке';
 					if (result.description) {
