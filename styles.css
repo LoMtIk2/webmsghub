@@ -91,7 +91,7 @@
 			transition: all 0.3s;
 			text-align: center;
 		}
-		.send-button:hover,
+
 		.button:hover,
 		.add-button:hover,
 		.mobile-send-button:hover {
@@ -198,6 +198,10 @@
 
 		.send-button i {
 			margin-bottom: -4px;
+		}
+
+		.send-button:hover {
+			color: #1ae828;
 		}
 
 		.channel {
