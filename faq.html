@@ -69,18 +69,40 @@
                 <li><i class="bi bi-arrow-clockwise"></i> Обновите страницу <code>api.telegram.org/</code></li>
                 <li>Включите  <kbd>Автоформатирование</kbd> и найдите в ответе JSON строку <span
                         class="var">"chat"</span>, под которой строка <span class="var">"id"</span> —
-                    это и есть ID вашего чата. (над строкой <span class="var">"title"</span>)</li>
+                    это и есть ID вашего чата. <white>(над строкой <span class="var">"title"</span>)</white>
+                    <white class="column"><i>Пример:</i><img src="chat-id.jpg" alt="Пример" style="max-width: 400px"><i>(Красным выделено id канала)</i></white>
+                    
+                
+                </li>
             </ol>
             <div id="nope"></div>
         </div>
 
         <div class="faq-item">
-            <h2>Как Сделать текст красивым?</h2>
-            <p>Данная функция находится в разработке, следите за новостями в нашем <a
-                    href="https://clck.ru/3GfxUu">Telegram</a> канале.</p>
-            <!-- <ol>
-                <li>Скоро...</a>
-            </ol> -->
+            <h2>Как красиво оформить текст?</h2>
+            <p>Для красивого оформления текста, есть <span class="var">Форматирование</span> текста, Вот несколько примеров:</p>
+            <ol>
+                <li>HTML-Форматирование:
+                    <ol>
+                        <li><b>Жирный текст</b> - <span class="var">&lt;b&gt; <white>Текст</white> &lt;/b&gt;</span></li>
+                        <li><i>Курсив</i> - <span class="var">&lt;i&gt; <white>Текст</white> &lt;/i&gt;</span></li>
+                        <li><u>Подчертнутый текст</u> - <span class="var">&lt;u&gt; <white>Текст</white> &lt;/u&gt;</span></li>
+                        <li><s>Зачёркнутый текст</s> - <span class="var">&lt;s&gt; <white>Текст</white> &lt;/s&gt;</span</li>
+                        <li><code>Моно</code> - <span class="var">&lt;code&gt; <white>Текст</white> &lt;/code&gt;</span></li>
+                        <li><a id="link" href="#link">Текст ссылка</a> - <span class="var">&lt;a href="<white>Ссылка</white>"&gt; <white>Текст</white> &lt;/a&gt;</span></li>
+                    </ol>
+                </li>
+                <li style="margin-top: 5px;">Markdown и Markdown V2:
+                    <ol>
+                        <li><b>Жирный текст</b> - <span class="var">** <white>Текст</white> **</li>
+                        <li><i>Курсив</i> - <span class="var">_ <white>Текст</white> _</span></li>
+                        <li><u>Подчертнутый текст</u> - <span class="var">__ <white>Текст</white> __</span></li>
+                        <li><s>Зачёркнутый текст</s> - <span class="var">~ <white>Текст</white> ~</span</li>
+                        <li><code>Моно</code> - <span class="var">` <white>Текст</white> `</span></li>
+                        <li><a id="link" href="#link">Текст ссылка</a> - <span class="var">[ <white>Текст</white> ]( <white>Ссылка</white> )</span></li>
+                    </ol>
+                </li>
+            </ol>
         </div>
         <footer>
             <a href="https://t.me/webmsghub" class="contact"><i class="bi bi-telegram"></i>Telegram</a>
